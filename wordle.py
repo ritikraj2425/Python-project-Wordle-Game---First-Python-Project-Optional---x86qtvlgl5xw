@@ -44,19 +44,32 @@ class GameLogic:
     def check_current_guess_is_valid(self):
         # return True if current guess is valid else return False
         # current guess is valid if it is a valid word and it is 5 letter word
-        return True
+        current_guess_string = ''
+        for item in self.current_guess_list:
+            current_guess_string += item[0]
+        
+        return len(current_guess_string) == 5 and current_guess_string in words.WORDS
 
     # current_guess is list of List where the first letter denotes the user entered letter
     # and second letter denotes weather that letter is present in solution word or not.
     # and the third letter denotes weather the letter is present in the solution word in the correct position or not.
     def check_the_current_guess(self):
         current_guess_string = ''
+        for idx, item in enumerate(self.current_guess_list):
+            current_guess_string += item[0]
+            if item[0] in self.solution_word:
+                item[1] = 1
+                if item[0] == self.solution_word[idx]:
+                    item[2] = 1
+        return current_guess_string == self.solution_word
+
+
         # write code here to test current guess
         # if current guess is correct return True else return False
         pass
-
     def get_guess_list(self):
         return self.guess_list
 
     def get_current_guess_list(self):
         return self.current_guess_list
+#python3 -m pygame.examples.aliens

@@ -14,6 +14,9 @@ GRAY = (200, 200, 200)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
+YELLOW = (0, 255, 255)
+DARKYELLOW = (255, 164, 17)
+
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -25,7 +28,7 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Wordle")
 box = pygame.sprite.Group()
 random = random.randint(0, 12970)
-solution_word = 'world'  # words.WORDS[random]
+solution_word =  words.WORDS[random] 
 game_logic = wordle.GameLogic(solution_word)
 all_boxes = get_boxes(screen.get_height(), screen.get_width(), TILE_HEIGHT, TILE_WIDTH, TILE_MARGIN, NUMBER_OF_ROWS,
                       NUMBER_OF_COLUMNS, GAP, game_logic)
@@ -60,7 +63,7 @@ while not done:
                     box.add(item)
 
     # --- Drawing code should go here
-    screen.fill(WHITE)
+    screen.fill(DARKYELLOW)
     if game_logic.is_game_over:
         if game_logic.is_game_won:
             font = pygame.font.SysFont('Comic Sans MS', 50)

@@ -3,7 +3,7 @@ import pygame
 
 class BorderedBox(pygame.sprite.Sprite):
     def __init__(self, color, width, height,
-                 border_width=5, border_color=pygame.Color('black'),
+                 border_width=5, border_color=pygame.Color('red'),
                  top=0, left=0, letter='', font_size=50):
         super().__init__()
         self.image = pygame.Surface([width + 2 * border_width, height + 2 * border_width])
@@ -11,7 +11,7 @@ class BorderedBox(pygame.sprite.Sprite):
                          border_width)
         pygame.draw.rect(self.image, color, (border_width, border_width, width, height))
         if letter:
-            font = pygame.font.SysFont('Comic Sans MS', font_size)
+            font = pygame.font.SysFont('bazooka', font_size)
             text = font.render(letter, True, pygame.Color('black'))
             text_rect = text.get_rect(center=(width / 2 + border_width, height / 2 + border_width))
             self.image.blit(text, text_rect)
@@ -37,7 +37,7 @@ def get_boxes(screen_height, screen_width,
         for column in range(number_of_columns):
             if game_logic_state and row < len(game_logic_state_list) and \
                     column < len(game_logic_state_list[row]):
-                color = pygame.Color('gray')
+                color = pygame.Color('red')
                 if game_logic_state_list[row][column][1]:
                     color = pygame.Color('yellow')
                 if game_logic_state_list[row][column][2]:
